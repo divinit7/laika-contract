@@ -1,6 +1,8 @@
 import hre from "hardhat";
 
 async function main() {
+
+  // change wallet address to initialOwner Address 
   let initialOwner = "0xfEceA7b046b4DaFACE340c7A2fe924cf41b6d274"
 
   const ContractFactory = await hre.ethers.getContractFactory("LaikaAI");

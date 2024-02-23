@@ -12,6 +12,10 @@ npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
 
+## Change initialOwner address in deploy.ts
+
+`let initialOwner = ""`
+
 ## Command for deploy script:
 
 ### Testnet Mumbai
