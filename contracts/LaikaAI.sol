@@ -5,22 +5,18 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol';
-import '@openzeppelin/contracts/access/Ownable.sol';
 
 /**
  * @title LaikaAI
- * @dev Extends ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, and Ownable contracts from OpenZeppelin.
+ * @dev Extends ERC20, ERC20Burnable, ERC20Permit, ERC20Votes contracts from OpenZeppelin.
  */
-contract LaikaAI is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, Ownable {
+contract LaikaAI is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes {
     uint256 private constant INITIAL_SUPPLY = 1_000_000_000 * 10 ** decimals();
 
     /**
      * @dev Constructor that initializes the LaikaAI token with an initial supply and transfers it to the deployer.
-     * @param initialOwner The address that will become the initial owner of all LaikaAI tokens.
      */
-    constructor(
-        address initialOwner
-    ) ERC20('Laika AI', 'LKI') ERC20Permit('Laika AI') Ownable(initialOwner) {
+    constructor() ERC20('Laika AI', 'LKI') ERC20Permit('Laika AI') {
         _mint(msg.sender, INITIAL_SUPPLY);
     }
 
