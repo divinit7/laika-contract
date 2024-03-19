@@ -21,6 +21,17 @@ contract LaikaAI is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes {
     }
 
     /**
+     * @dev Overrides the nonces function to return the nonce for permit signature verification.
+     * @param owner The address for which the nonce is queried.
+     * @return The current nonce associated with the owner address.
+     */
+    function nonces(
+        address owner
+    ) public view override(ERC20Permit, Nonces) returns (uint256) {
+        return super.nonces(owner);
+    }
+
+    /**
      * @dev Overrides the _update function to ensure compatibility with ERC20Votes.
      * @param from The address from which tokens are transferred.
      * @param to The address to which tokens are transferred.
@@ -32,16 +43,5 @@ contract LaikaAI is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes {
         uint256 value
     ) internal override(ERC20, ERC20Votes) {
         super._update(from, to, value);
-    }
-
-    /**
-     * @dev Overrides the nonces function to return the nonce for permit signature verification.
-     * @param owner The address for which the nonce is queried.
-     * @return The current nonce associated with the owner address.
-     */
-    function nonces(
-        address owner
-    ) public view override(ERC20Permit, Nonces) returns (uint256) {
-        return super.nonces(owner);
     }
 }
