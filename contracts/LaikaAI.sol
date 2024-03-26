@@ -9,15 +9,20 @@ import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol';
 /**
  * @title LaikaAI
  * @dev Extends ERC20, ERC20Burnable, ERC20Permit, ERC20Votes contracts from OpenZeppelin.
+ * @notice This contract implements a basic ERC20 token with burn, permit, and voting capabilities.
  */
 contract LaikaAI is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes {
-    uint256 private constant INITIAL_SUPPLY = 1_000_000_000 * 10 ** decimals();
+    uint256 public immutable INITIAL_SUPPLY;
 
     /**
      * @dev Constructor that initializes the LaikaAI token with an initial supply and transfers it to the deployer.
+     * @param initialSupply The initial supply of LaikaAI tokens.
      */
-    constructor() ERC20('Laika AI', 'LKI') ERC20Permit('Laika AI') {
-        _mint(msg.sender, INITIAL_SUPPLY);
+    constructor(
+        uint256 initialSupply
+    ) ERC20('Laika AI', 'LKI') ERC20Permit('Laika AI') {
+        INITIAL_SUPPLY = initialSupply;
+        _mint(msg.sender, initialSupply);
     }
 
     /**
