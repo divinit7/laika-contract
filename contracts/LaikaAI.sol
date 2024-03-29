@@ -16,13 +16,9 @@ contract LaikaAI is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes {
 
     /**
      * @dev Constructor that initializes the LaikaAI token with an initial supply and transfers it to the deployer.
-     * @param initialSupply The initial supply of LaikaAI tokens.
      */
-    constructor(
-        uint256 initialSupply
-    ) ERC20('Laika AI', 'LKI') ERC20Permit('Laika AI') {
-        INITIAL_SUPPLY = initialSupply;
-        _mint(msg.sender, initialSupply);
+    constructor() ERC20('Laika AI', 'LKI') ERC20Permit('Laika AI') {
+        _mint(msg.sender, INITIAL_SUPPLY);
     }
 
     /**
